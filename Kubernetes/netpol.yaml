@@ -1,0 +1,14 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-policy
+  namespace: app-tier-ns
+spec:
+  podSelector:
+    matchLabels:
+            app: mysql
+  ingress:
+  - from:
+      - podSelector:
+          matchLabels:
+                  app: java
